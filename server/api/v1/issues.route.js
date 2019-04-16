@@ -50,6 +50,15 @@ router.route('/issues')
         value: req.body.typeValue,
       },
       date: new Date().getTime(),
+      ...parameters,
+      status: {
+        name: req.body.statusName,
+        value: req.body.statusValue,
+      },
+      type: {
+        name: req.body.typeName,
+        value: req.body.typeValue,
+      },
     });
     newIssue.save()
       .then(() => {
