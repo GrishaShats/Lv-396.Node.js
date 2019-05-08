@@ -25,22 +25,37 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { UserListComponent } from './contact-info/user-list/user-list.component';
 import { UserFilterComponent } from './contact-info/user-filter/user-filter.component';
 import { FilterUsersByPipe } from './contact-info/filter-users-by.pipe';
-import { CreateUserPageComponent } from './create-user-page/create-user-page.component';
-import { CreateSideBarInfoComponent } from './create-user-page/create-side-bar-info/create-side-bar-info.component';
-import { DropdownInfoComponent } from './create-user-page/create-side-bar-info/dropdown-info/dropdown-info.component';
 import { DatepickerFilterComponent } from './filter/datepicker-filter/datepicker-filter.component';
+<<<<<<< HEAD
 import { UpcomingDatesComponent } from './upcoming-dates/upcoming-dates.component';
 import { ListDatesComponent } from './upcoming-dates/list-dates/list-dates.component';
 import { AddTaskFormComponent } from './add-task-form/add-task-form.component';
+=======
+import { CreateUpdateSideBarInfoComponent } from './create-update-user-page/create-update-side-bar-info/create-update-side-bar-info.component';
+import { CreateUpdateUserPageComponent } from './create-update-user-page/create-update-user-page.component';
+import { DropdownInfoComponent } from './create-update-user-page/create-update-side-bar-info/dropdown-info/dropdown-info.component';
+import { UpcomingDatesComponent } from './upcoming-dates/upcoming-dates.component';
+import { ListDatesComponent } from './upcoming-dates/list-dates/list-dates.component';
+import { ItemDateComponent } from './upcoming-dates/list-dates/item-date/item-date.component';
+import { AddTaskFormComponent } from './add-task-form/add-task-form.component';
+import { DatepickerComponent } from './create-update-user-page/datepicker/datepicker.component';
+
+
+import { appConfigProviders } from './common/config';
+import { FilterReturnService } from './common/filter-return.service';
+import { FilterDatesByPipe } from './filter-dates-by.pipe';
+import { CreateUpdateUserComponent } from './create-update-user-page/create-update-user/create-update-user.component';
+>>>>>>> 9c519e74bd90f94f3e6dfe1f6290e2ef380dbc36
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'profile', pathMatch: 'full' },
-  { path: '', component: WrapperComponent },
+  { path: '', redirectTo: 'upcoming-tasks', pathMatch: 'full' },
+  { path: 'upcoming-tasks', component: WrapperComponent },
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'my-profile/:id', component: MyProfileComponent },
   { path: 'contact-info', component: ContactInfoComponent },
   { path: 'contact-info/:id', component: ContactInfoComponent },
-  { path: 'create-user', component: CreateUserPageComponent },
+  { path: 'create-user', component: CreateUpdateUserPageComponent },
+  { path: 'edit-user', component: CreateUpdateUserPageComponent },
   { path: 'upcoming-dates', component: UpcomingDatesComponent }
 ];
 
@@ -55,6 +70,7 @@ export const routes: Routes = [
     DropdownFilterComponent,
     AccordionComponent,
     FilterTasksByPipe,
+    FilterDatesByPipe,
     ItemComponent,
     ModalComponent,
     MyProfileComponent,
@@ -62,20 +78,27 @@ export const routes: Routes = [
     UserListComponent,
     UserFilterComponent,
     FilterUsersByPipe,
-    CreateUserPageComponent,
-    CreateSideBarInfoComponent,
+    CreateUpdateUserPageComponent,
+    CreateUpdateSideBarInfoComponent,
     DatepickerFilterComponent,
     DropdownInfoComponent,
     UpcomingDatesComponent,
+<<<<<<< HEAD
     ListDatesComponent
     DropdownInfoComponent,
     AddTaskFormComponent
+=======
+    ListDatesComponent,
+    ItemDateComponent,
+    AddTaskFormComponent,
+    CreateUpdateUserComponent,
+    DatepickerComponent,
+>>>>>>> 9c519e74bd90f94f3e6dfe1f6290e2ef380dbc36
   ],
   imports: [
     CommonModule,
     RouterModule,
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -84,6 +107,10 @@ export const routes: Routes = [
     AccordionModule.forRoot(),
     ModalModule.forRoot()
   ],
+  providers: [
+    appConfigProviders,
+    FilterReturnService
+  ],
   bootstrap: [WrapperComponent]
 })
-export class PageModule { }
+export class PageModule {}

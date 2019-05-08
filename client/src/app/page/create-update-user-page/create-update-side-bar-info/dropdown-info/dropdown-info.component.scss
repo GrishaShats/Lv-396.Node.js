@@ -1,0 +1,55 @@
+@import '../../../../common/css/theme';
+
+.btn.dropdown-toggle.option-el {
+  border-radius: 0;
+  color: $primary-color;
+  background: $bg2-color;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  text-align: left;
+  height: 50px;
+  border-right: $border-sides;
+  border-top: $border-sides;
+  border-bottom: $border-sides;
+}
+.border-red {
+  border-left: 5px solid #ff000069;
+}
+.border-green {
+  border-left: 5px solid #28a74575;
+}
+.btn-group {
+  display: block;
+}
+.btn-group button {
+  width:100%;
+}
+.dropdown-menu {
+  position: relative;
+  left: 0;
+  right: auto;
+  float: none;
+  margin: -1px;
+  top: 100%;
+  bottom: auto;
+  background-color: #fff;
+  color: $primary-color;
+  border: $case-color solid 1px;
+  width: 101%;
+}
+.dropdown-item{
+  margin: 5px;
+  color: $primary-color;
+  font-family: $font-stack;
+  white-space: inherit;
+  line-height: normal;
+}
+@media (max-width: 991px) {
+  @media (min-width: 600px) {
+    .dropdown-menu {
+      position: absolute;
+    }
+  }
+}
+
+

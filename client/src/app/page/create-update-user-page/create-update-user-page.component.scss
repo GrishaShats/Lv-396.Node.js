@@ -1,0 +1,36 @@
+@import "../../common/css/theme";
+@import "../../common/css/theme.form";
+
+.info-form {
+  padding: 10px 0 10px 0;
+
+  .form-control {
+    height: 50px;
+    width: 100%;
+  }
+}
+
+.save-profile {
+  .save-button {
+    width: 100%;
+    background-color: $primary-color;
+    color: $bg-color;
+    margin-top: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    @media (max-width: 991px) {
+      margin-top: 20px;
+    }
+  }
+}
+
+.alert {
+  color: $danger-color;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 0;
+}

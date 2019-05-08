@@ -1,7 +1,10 @@
+@import '../../../common/css/theme.scss';
+
 img {
-  border-radius: 50%;
-  width: 75%;
-  height: auto;
+  border-radius: 75%;
+  width: 250px;
+  padding-bottom: 5px;
+  height: 250px;
   @media (max-width: 500px) {
     float: left;
   }
@@ -13,4 +16,17 @@ img {
   }
 }
 
-
+.update-photo-button {
+  margin-top: 3px;
+  padding: 10px;
+  align-self: center;
+  flex: 2 30%;
+  height: 48px;
+  border: none;
+  background-color: $primary-color;
+  color: white;
+  text-transform: uppercase;
+  line-height: normal;
+  font-weight: bold;
+  font-size: 12px;
+}

@@ -8,6 +8,7 @@ $container-max-widths: (
 );
 
 $font-stack: Arial, sans-serif;
+$danger-color:#ff0000cf;
 $primary-color: #2699FB;
 $border-color: #7FC4FD;
 $case-color: #BCE0FD;
@@ -20,6 +21,7 @@ $base-line-height: 16px;
 $base2-font-size: 20px;
 $big-font-size: 40px;
 $base3-font-size: 24px;
+$border-sides: #BCE0FD solid 1px;
 
 .col,
 [class*="col-"],
