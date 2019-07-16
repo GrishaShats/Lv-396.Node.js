@@ -1,0 +1,42 @@
+<div class="main-wrapper">
+  <div class="card">
+    <p class="card-title">Data page<span class="font-weight-bold"></span></p>
+    <div ngClass="card-home">
+        <div class="form-group">
+          <span class="topic">Name:</span>
+          <span class="form-control">{{ user.name }}</span>
+        </div>
+
+        <div class="form-group">
+          <span class="topic">Login:</span>
+          <span class="form-control field">{{ user.login }}</span>
+        </div>
+
+        <div class="form-group">
+          <span class="topic">City:</span>
+          <span class="form-control">{{ user.city }}</span>
+        </div>
+
+        <div class="form-group">
+          <span class="topic">Contact:</span>
+          <span class="form-control">{{ user.contact }}</span>
+        </div>
+
+        <div class="row form-button mt-4">
+          <div class="col-4">
+            <button type="button" class="btn btn-outline-primary forgotpsw-button font-weight-bold"
+                    id="delete-button" [routerLink]="['/home']" (click)="confirm()">Delete</button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-primary text-white login-button font-weight-bold"
+                    [routerLink]="['/profile/update']">Edit</button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-primary text-white login-button font-weight-bold"
+                    (click)="logout()"
+                    [routerLink]="['/home']">Logout</button>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

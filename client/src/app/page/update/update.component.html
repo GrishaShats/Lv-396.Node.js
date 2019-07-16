@@ -1,0 +1,49 @@
+<div class="main-wrapper">
+  <div class="card">
+    <p class="card-title">UPDATE<span class="font-weight-bold"></span></p>
+    <div ngClass="card-home">
+      <form class="container" [formGroup]="frm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input class="form-control" formControlName="name" name="name">
+        </div>
+        <div class="alert alert-danger" *ngIf="frm.controls.name.invalid && frm.controls.name.value">
+          <div *ngIf="frm.controls.name.errors.required">Name is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="login">Login:</label>
+          <input class="form-control" formControlName="login" name="login">
+        </div>
+        <div class="alert alert-danger" *ngIf="frm.controls.login.invalid && frm.controls.login.value">
+          <div *ngIf="frm.controls.login.errors.required">Login is required</div>
+        </div>
+
+        <div class="form-group" >
+          <label for="city">City:</label>
+          <select class="form-control" formControlName="city" name="city">
+            <option *ngFor="let city of cities">
+              {{ city.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="contact">Contact:</label>
+          <input class="form-control" formControlName="contact" name="contact">
+        </div>
+
+        <div class="row form-button mt-4">
+          <div class="col-6">
+            <button type="submit" class="btn btn-primary text-white login-button font-weight-bold"
+                    [disabled] = "frm.controls.login.invalid || frm.controls.name.invalid ">Update</button>
+          </div>
+          <div class="col-6">
+            <a [routerLink]="[ '/profile' ]"
+               class="btn btn-outline-primary forgotpsw-button font-weight-bold">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

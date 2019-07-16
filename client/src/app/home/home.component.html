@@ -1,0 +1,41 @@
+<div class="main-wrapper">
+  <div class="card">
+    <p class="card-title">LOGIN<span class="font-weight-bold"></span></p>
+    <div ngClass="card-home">
+      <form class="container" [formGroup]="frm" (ngSubmit)="auth(frm.value)">
+        <div class="form-group">
+          <label for="login">LOGIN:</label>
+          <input class="form-control" formControlName="login" name="login">
+        </div>
+        <div class="alert alert-danger" *ngIf="frm.controls.login.invalid && frm.controls.login.value">
+          <div *ngIf="frm.controls.login.errors.required">Login is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">PASSWORD:</label>
+          <input class="form-control" formControlName="password" type="password" name="password">
+        </div>
+        <div class="alert alert-danger" *ngIf="frm.controls.password.invalid && frm.controls.password.value">
+          <div *ngIf="frm.controls.password.errors.required">Password is required</div>
+          <div *ngIf="frm.controls.password.errors.minlength">Password must be at least 5 characters</div>
+          <div *ngIf="frm.controls.password.errors.pattern">Password must contain at least one uppercase, one lowercase, and one symbol</div>
+        </div>
+
+        <div class="row form-button mt-4">
+          <div class="col-6">
+            <a [routerLink]="[ '/register' ]"
+              class="btn btn-primary text-white login-button font-weight-bold">Register</a>
+          </div>
+          <div class="col-6">
+            <button type="submit" class="btn btn-primary text-white login-button font-weight-bold"
+              [disabled] = "frm.controls.password.invalid || frm.controls.login.invalid">LOGIN</button>
+          </div>
+        </div>
+
+        <div class="alert alert-danger mt-2" *ngIf="hasFailed && !frm.controls.password.invalid">
+          Invalid login or password.
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
