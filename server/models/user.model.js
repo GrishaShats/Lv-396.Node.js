@@ -15,17 +15,14 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  name: {
+  firstName: {
     type: String,
     required: true,
   },
-  city: {
+  lastName: {
     type: String,
     required: true,
   },
-  contact: {
-    type: String,
-  }
 });
 
 function hashPassword(next) {

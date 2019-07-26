@@ -41,11 +41,10 @@ const signin = async (req, res) => {
 
 const signup = async (req, res) => {
   const newUser = User({
-    name: req.body.name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     login: req.body.login,
     password: req.body.password,
-    city: req.body.city,
-    contact: req.body.contact,
   });
 
   if (!newUser.password) {

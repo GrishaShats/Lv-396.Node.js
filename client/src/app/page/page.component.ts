@@ -1,46 +1,41 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Task } from '../common/models/task';
+import { TaskService } from '../common/services/task.service';
 import { UserService } from '../common/services/user.service';
-import { User } from '../common/models/user';
-import { throwError, Subject } from 'rxjs';
-import { AuthService } from "../common/services/auth.service";
+import { throwError } from 'rxjs';
+import { AuthService } from '../common/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.scss']
 })
-export class PageComponent implements OnInit, OnDestroy {
-  private readonly destroy$ = new Subject<void>();
+export class PageComponent implements OnInit {
+  tasks: Task[];
 
-  constructor(private readonly userService: UserService,
-              private readonly authService: AuthService,
-              private readonly route: ActivatedRoute,
-              private readonly router: Router) { }
-
-  user: User;
-  id: any;
+  constructor(
+    private readonly userService: UserService,
+    private readonly taskService: TaskService,
+    private readonly authService: AuthService,
+    private readonly router: Router) {
+  }
 
   ngOnInit(): void {
-    this.checkIdParam();
+    this.getTasks();
+    this.loadTasks(this.userService.getUserId());
   }
 
-  confirm(): void {
-    this.userService.deleteUser(this.user._id)
-      .subscribe(() =>
-        this.router.navigate(['/home'], {relativeTo: this.route}));
-    this.logout()
+  getTasks(): void {
+    this.taskService.takeUserTasks
+      .subscribe(tasks => this.tasks = tasks);
+
   }
 
-  private readonly checkIdParam = () => {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.loadUser(this.id);
-  };
-
-  private readonly loadUser = (id: string) => {
-    this.userService.getUser(id, true)
-      .subscribe(user => this.user = user);
-  };
+  loadTasks(userID): void {
+    this.taskService.getUserTasks(userID)
+      .subscribe();
+  }
 
   logout(): boolean {
     this.authService.logout();
@@ -48,10 +43,5 @@ export class PageComponent implements OnInit, OnDestroy {
       .catch(err => throwError(new Error(err)));
 
     return false;
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 }

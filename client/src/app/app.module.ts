@@ -23,8 +23,11 @@ import { PageComponent } from './page/page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { RegistrationComponent } from './home/registration/registration.component';
-import { HttpModule } from "@angular/http";
-import { UpdateComponent } from './page/update/update.component';
+import { HttpModule } from '@angular/http';
+import { TaskListComponent } from './page/task-list/task-list.component';
+import { TaskItemComponent } from './page/task-list/task-item/task-item.component';
+import { CreateTaskComponent } from './page/create-task/create-task.component';
+import { ModalTaskComponent } from './page/modal-task/modal-task.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { UpdateComponent } from './page/update/update.component';
     HomeComponent,
     PageNotFoundComponent,
     RegistrationComponent,
-    UpdateComponent,
+    TaskListComponent,
+    TaskItemComponent,
+    CreateTaskComponent,
+    ModalTaskComponent,
   ],
 
   imports: [

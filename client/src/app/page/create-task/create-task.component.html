@@ -1,0 +1,16 @@
+<form class="form" [formGroup]="addTaskForm" (ngSubmit)="onSubmit()">
+  <div class="col">
+    <input type="text"
+           name="taskName"
+           formControlName="taskName"
+           id="taskName"
+           required minlength="5" maxlength="100"
+           placeholder="Theme name"
+           value="" class="ml-auto col-lg-10"
+           [(ngModel)]="searchValue"/>
+    <input type="submit" value="Send Issue" class="submit-button col-lg-2" [disabled]="!addTaskForm.valid"/>
+    <div *ngIf="isFieldCorrectLength('taskName')" class="alert alert-danger visible-temporarily">
+      The item text length have to be 5 symbols at least.
+    </div>
+  </div>
+</form>

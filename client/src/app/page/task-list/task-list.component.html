@@ -1,0 +1,3 @@
+<div class="accordion-wrapper" *ngFor="let task of tasks; trackBy: trackElement">
+  <app-task-item [task]="task" id="{{ task.id }}"></app-task-item>
+</div>

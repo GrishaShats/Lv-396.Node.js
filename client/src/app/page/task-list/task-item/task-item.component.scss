@@ -1,0 +1,249 @@
+@import "../../../common/css/theme";
+@import '../../../common/css/theme.form';
+
+::ng-deep .accordion-wrapper:not(:last-child) .card {
+  border-bottom: 0;
+}
+
+.text-edit {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 15px;
+  height: 48px;
+  margin-bottom: 10px;
+}
+
+.heading-grid {
+  display: grid;
+  grid-template-columns: 85% 15% 1.7%;
+  grid-template-rows: 1fr auto;
+}
+
+.heading-text {
+  padding-left: 20px;
+
+}
+
+.heading-text h5 {
+  margin-top: 8px;
+}
+
+.heading-grid span {
+  display: none;
+}
+
+.heading-icon {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+::ng-deep .card-header {
+  border-bottom: none;
+  background-color: $bg2-color !important;
+  cursor: pointer;
+  padding: 0 20px 0 0;
+}
+
+::ng-deep .card-body {
+  padding: 0 20px 0px 0;
+}
+
+::ng-deep .card {
+  border: $case-color solid 1px;
+  border-radius: 0;
+}
+
+.body-grid {
+  display: grid;
+  grid-template-columns: 10px auto 17% 15%;
+  grid-gap: 5px;
+}
+
+.body-from {
+  padding-left: 15px;
+}
+
+.body-share {
+  padding-bottom: 10px;
+}
+
+.delete-button {
+  margin-left: 75px;
+}
+
+.body-from {
+  margin-top: auto;
+  margin-bottom: auto;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.body-share {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.delete-button {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.edit-button {
+  grid-column-start: 4;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.share-button{
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.heading-text > h5 {
+  font-weight: bold;
+}
+
+.heading-icon i {
+  margin-top: 170%;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.body-text {
+  padding-top: 5px;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.hiddenMark {
+  visibility: hidden;
+}
+
+.visible {
+  display: block;
+}
+
+.message-position {
+  margin-top: 16px;
+}
+@media (max-width: 530px) {
+  .heading-grid {
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 10px auto 10%;
+    grid-gap: 30px;
+  }
+
+  .body-grid {
+    grid-template-columns: 10px auto auto;
+    grid-template-rows: auto auto;
+  }
+
+  .body-from {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  .delete-button {
+    grid-column-start: 3;
+    grid-row-start: 2;
+  }
+
+  .body-share {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+  }
+
+  .edit-button {
+    grid-column-start: 3;
+    grid-column-end: 3;
+  }
+  .share-button {
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+}
+
+@media (max-width: 992px) {
+  .heading-grid {
+    grid-template-rows: 1fr auto auto;
+    grid-template-columns: 10px auto auto 10%;
+    grid-gap: 5px;
+  }
+  .heading-text {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  .heading-icon {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    margin-left: 85%;
+  }
+  .body-from {
+    margin-left: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .panel-open .body-text {
+    margin-top: 0;
+  }
+  .delete-button {
+    grid-column-start: 3;
+    grid-row-start: 2;
+  }
+  .edit-button {
+    grid-column-start: 3;
+    grid-column-end: 3;
+  }
+  .share-button {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.heading-icon {
+  background: url(../../../../assets/img/arrow_down.svg) center no-repeat;
+  width: 16px;
+}
+
+.panel-open .heading-grid {
+  grid-template-rows: auto;
+}
+.panel-open .heading-icon {
+  background: url(../../../../assets/img/arrow_up.svg) center no-repeat;
+}
+
+.waiting {
+  color: $primary-color;
+  font-style: italic;
+}
+
+.pointer {
+  cursor: pointer;
+}
+

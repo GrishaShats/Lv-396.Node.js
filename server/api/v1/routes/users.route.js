@@ -4,6 +4,7 @@ const controller = require('../controllers/UserController');
 const router = express.Router();
 
 router.route('/')
+  .get(controller.getAll)
   .delete(controller.deleteOne)
   .put(controller.updateOne);
 

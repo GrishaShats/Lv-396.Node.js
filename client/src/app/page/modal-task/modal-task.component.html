@@ -1,0 +1,58 @@
+<div *ngIf="modalType === 'EDIT'" class="re-assign">
+  <button type="button" class="btn btn-outline-primary text-reassign" (click)="openModal(updateTask)">
+    Update
+  </button>
+</div>
+<div *ngIf="modalType === 'SHARE'">
+  <button type="button" class="btn btn-outline-primary text-reassign" (click)="openModal(shareTask)">
+    Share
+  </button>
+</div>
+<ng-template #updateTask>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">UPDATE TASK</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form" [formGroup]="editTaskForm" (ngSubmit)="onSubmit()">
+      <div class="col">
+        <input type="text"
+               name="taskName"
+               formControlName="taskName"
+               id="taskName"
+               required minlength="5" maxlength="100"
+               placeholder="Theme name"
+               value="" class="ml-auto "/>
+        <div class="submit-button">
+          <button type="submit"
+                  (click)="hideAfter()"
+                  class="btn btn-primary"
+                  [disabled]="!editTaskForm.valid">Send Issue</button>
+        </div>
+
+        <div *ngIf="isFieldCorrectLength('taskName')" class="alert alert-danger visible-temporarily">
+          The item text length have to be 5 symbols at least.
+        </div>
+
+      </div>
+    </form>
+  </div>
+</ng-template>
+<ng-template #shareTask>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">SHARE TASK</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row list-users" *ngFor="let user of users"
+         (click)="selectUser(user._id)">
+      <div class="col-md-4 box font-weight-bold">
+        {{ user.firstName }} {{ user.lastName }}
+      </div>
+    </div>
+  </div>
+</ng-template>

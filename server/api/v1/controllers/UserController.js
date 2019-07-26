@@ -1,5 +1,16 @@
 const User = require('../../../models/user.model');
 
+const getAll = async (req, res) => {
+  try {
+    const users = await User.find().exec();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({
+      err,
+    });
+  }
+};
+
 const deleteOne = async (req, res) => {
   const { id } = req.body;
   try {
@@ -23,10 +34,9 @@ const deleteOne = async (req, res) => {
 const updateOne = async (req, res) => {
   const { id } = req.body;
   const newUser = {
-    name: req.body.name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     login: req.body.login,
-    city: req.body.city,
-    contact: req.body.contact,
   };
 
   try {
@@ -68,6 +78,7 @@ const getOne = async (req, res) => {
 };
 
 module.exports = {
+  getAll,
   deleteOne,
   updateOne,
   getOne,

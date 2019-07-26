@@ -5,7 +5,6 @@ import { HttpTestingController, HttpClientTestingModule } from '@angular/common/
 import { api } from '../../../environments/environment';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from './auth.service';
-import { throwError } from 'rxjs';
 
 describe('AuthService', () => {
   let httpTestingController: HttpTestingController;
@@ -20,9 +19,63 @@ describe('AuthService', () => {
     service = TestBed.get(AuthService);
   });
 
+  afterEach(() => {
+    httpTestingController.verify();
+    service = undefined;
+  });
+
   it('should be created', () => {
-    const service: AuthService = TestBed.get(AuthService);
-    expect(service)
+    const authService: AuthService = TestBed.get(AuthService);
+    expect(authService)
       .toBeTruthy();
   });
+
+  it('should get token', () => {
+    const mockToken = [
+      { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9' }
+    ];
+
+    service.auth('asd', 'weqS@123')
+      .subscribe((response) => {
+        expect(response)
+          .toEqual(mockToken);
+      });
+
+    const mockReq = httpTestingController.expectOne(`${api}auth/login`);
+
+    expect(mockReq.request.method)
+      .toEqual('POST');
+    expect(mockReq.cancelled)
+      .toBeFalsy();
+    expect(mockReq.request.responseType)
+      .toEqual('json');
+    mockReq.flush(mockToken);
+
+  });
+
+  it(`should emit 'true' for 200 Ok`, async(inject([AuthService, HttpTestingController],
+    (authService: AuthService, backend: HttpTestingController) => {
+      authService.auth('asd', 'weqS@123')
+        .subscribe((next) => {
+          expect(next)
+            .toBeTruthy();
+        });
+
+      backend.expectOne(`${api}auth/login`)
+        .flush({ status: 200, statusText: 'Ok' });
+    })
+  ));
+
+  it(`should emit 'false' for 404 User not found`, async(inject([AuthService, HttpTestingController],
+    (authService: AuthService, backend: HttpTestingController) => {
+      authService.auth('das', 'weqS@123')
+        .subscribe(() => { }, err => {
+          expect(err)
+            .toBe(`User not found`);
+        });
+
+      backend.expectOne(`${api}auth/login`)
+        .flush({ status: 404, statusText: 'Not Found' });
+    })
+  ));
 });

@@ -4,7 +4,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '../common/services/auth.service';
 
-import { throwError } from 'rxjs';
 import { HomeComponent } from './home.component';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -26,11 +25,11 @@ describe('HomeComponent', () => {
       component = fixture.componentInstance;
       de = fixture.debugElement.query(By.css('form'));
       el = de.nativeElement;
-    });
+  });
 
   it('should be created', () => {
-    const service: HomeComponent = TestBed.get(HomeComponent);
-    expect(service)
+    const homeComponent: HomeComponent = TestBed.get(HomeComponent);
+    expect(homeComponent)
       .toBeTruthy();
   });
 
@@ -41,7 +40,7 @@ describe('HomeComponent', () => {
 
   it('login field validity', () => {
     let errors = {};
-    let login = component.frm.controls['login'];
+    const login = component.frm.controls['login'];
     expect(login.valid)
       .toBeFalsy();
 
@@ -53,29 +52,30 @@ describe('HomeComponent', () => {
     errors = login.errors || {};
     expect(errors['required'])
       .toBeFalsy();
-
-    login.setValue('gribmail@gmail.com');
-    errors = login.errors || {};
-    expect(errors['required'])
-      .toBeFalsy();
   });
 
   it('password field validity', () => {
     let errors = {};
     const password = component.frm.controls['password'];
 
-    errors = password.errors || {};
-    expect(errors['required'])
-      .toBeTruthy();
-
-    password.setValue('123456');
+    password.setValue('weqS@123');
     errors = password.errors || {};
     expect(errors['required'])
       .toBeFalsy();
 
-    password.setValue('456');
+    password.setValue('weq');
     errors = password.errors || {};
     expect(errors['required'])
+      .toBeFalsy();
+
+    password.setValue('weqS@123');
+    errors = password.errors || {};
+    expect(errors['minLength'])
+      .toBeFalsy();
+
+    password.setValue('weq');
+    errors = password.errors || {};
+    expect(errors['minLength'])
       .toBeFalsy();
   });
 
@@ -83,7 +83,7 @@ describe('HomeComponent', () => {
     expect(component.frm.valid)
       .toBeFalsy();
     component.frm.controls['login'].setValue('asd');
-    component.frm.controls['password'].setValue('456');
+    component.frm.controls['password'].setValue('weqS@123');
     expect(component.frm.valid)
       .toBeTruthy();
   });
@@ -106,7 +106,7 @@ describe('HomeComponent', () => {
 
   it('should call the auth method', async(() => {
     component.frm.controls['login'].setValue('asd');
-    component.frm.controls['password'].setValue('456');
+    component.frm.controls['password'].setValue('weqS@123');
     fixture.detectChanges();
     spyOn(component, 'auth');
     el = fixture.debugElement.query(By.css('button')).nativeElement;

@@ -1,0 +1,100 @@
+@import '../../common/css/theme';
+@import '../../common/css/theme.form';
+
+.text-reassign {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 15px;
+  height: 48px;
+}
+
+::ng-deep .modal-content {
+  background-color: $bg-color;
+  border-radius: 0;
+  color: $primary-color;
+  font-family: $font-stack;
+}
+
+::ng-deep .modal-content {
+  border: none;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+
+}
+
+.no-visible{
+  display: none;
+}
+
+::ng-deep .modal-dialog {
+  top: 30px;
+}
+
+.close {
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  background-color: $bg2-color;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  opacity: 1;
+  border: 0;
+  text-align: center;
+}
+
+.close:focus {
+  outline: 0;
+}
+
+.close span {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  width: 100%;
+  color: $border-color;
+  font-size: 32px;
+  line-height: 16px;
+}
+
+.close:not(:disabled):not(.disabled):hover {
+  background: $primary-color;
+  opacity: 1;
+}
+
+.close:hover span {
+  text-shadow: none;
+}
+
+.list-users {
+  padding-left: 0;
+  padding-right: 0;
+  border: 1px solid $case-color;
+  color: $primary-color;
+
+  .box {
+    position: relative;
+    padding: 15px 10px;
+    cursor: pointer;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    line-height: 1.2em;
+  }
+}
+
+@media(max-width:610px) {
+  .close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background-color: transparent;
+  }
+}

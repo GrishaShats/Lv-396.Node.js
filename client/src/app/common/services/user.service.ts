@@ -6,7 +6,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { User } from '../models/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { api } from '../../../environments/environment';
-import { UpdateUser } from '../models/update-user';
 
 export const httpOptions = {
   headers: new HttpHeaders({
@@ -28,7 +27,7 @@ export class UserService {
 
   public takeUser: BehaviorSubject<User> = new BehaviorSubject({});
 
-  getUser(id?: string, required?: boolean): Observable<User> {
+  public getUser(id?: string, required?: boolean): Observable<User> {
     const userId = this.getUserId();
 
     return this.http.get<any>(`${api}users/${id || userId}`, httpOptions)
@@ -39,36 +38,22 @@ export class UserService {
       );
   }
 
-  addUser(user: User): Observable<any> {
+  public getAll(): Observable<User[]> {
+    return this.http.get<User[]>(`${api}users`, httpOptions);
+  }
+
+
+  public addUser(user: User): Observable<any> {
     return this.http.post<User>(`${api}auth/signup`, user, httpOptions);
   }
 
-  getUserId(): any {
+  public getUserId(): any {
     if (localStorage.token) {
       return this.helper.decodeToken(localStorage.token).id;
     }
   }
 
-  deleteUser(id: string): Observable<any> {
-    const deleteOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      }),
-      body: {id}
-    };
-
-    return this.http.delete(`${api}users/`, deleteOptions);
-  }
-
-  updateUser(user: User): Observable<any> {
-    const updateUser = new UpdateUser();
-    updateUser.mapUser(user);
-
-    return this.http.put<User>(`${api}users`, updateUser, httpOptions);
-  }
-
-  currentUser(required: boolean, data: User): void {
+  public currentUser(required: boolean, data: User): void {
     if (!required) {
       this.takeUser.next(data);
     }

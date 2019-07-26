@@ -4,11 +4,19 @@
     <div ngClass="card-home">
       <form class="container" [formGroup]="frm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="name">Name:</label>
-          <input class="form-control" formControlName="name" name="name">
+          <label for="firstName">First Name:</label>
+          <input class="form-control" formControlName="firstName" name="firstName">
         </div>
-        <div class="alert alert-danger" *ngIf="frm.controls.name.invalid && frm.controls.name.value">
-          <div *ngIf="frm.controls.name.errors.required">Name is required</div>
+        <div class="alert alert-danger" *ngIf="frm.controls.firstName.invalid && frm.controls.firstName.value">
+          <div *ngIf="frm.controls.firstName.errors.required">First Name is required</div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input class="form-control" formControlName="lastName" name="lastName">
+        </div>
+        <div class="alert alert-danger" *ngIf="frm.controls.lastName.invalid && frm.controls.lastName.value">
+          <div *ngIf="frm.controls.lastName.errors.required">Last Name is required</div>
         </div>
 
         <div class="form-group">
@@ -29,28 +37,17 @@
           <div *ngIf="frm.controls.password.errors.pattern">Password must contain at least one uppercase, one lowercase, and one symbol</div>
         </div>
 
-        <div class="form-group" >
-          <label for="city">City:</label>
-          <select class="form-control" formControlName="city" name="city">
-            <option *ngFor="let city of cities">
-              {{ city.name }}
-            </option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="contact">Contact:</label>
-          <input class="form-control" formControlName="contact" name="contact">
-        </div>
-
         <div class="row form-button mt-4">
           <div class="col-6">
             <button type="submit" class="btn btn-primary text-white login-button font-weight-bold"
-                    [disabled] = "frm.controls.password.invalid || frm.controls.login.invalid || frm.controls.name.invalid ">Create</button>
+                    [disabled] = "frm.controls.password.invalid
+                    || frm.controls.login.invalid
+                    || frm.controls.firstName.invalid
+                    || frm.controls.lastName.invalid">Create</button>
           </div>
           <div class="col-6">
           <a [routerLink]="[ '/home' ]"
-             class="btn btn-outline-primary forgotpsw-button font-weight-bold">Cancel</a>
+             class="btn btn-outline-primary cancel-button font-weight-bold">Cancel</a>
           </div>
         </div>
       </form>

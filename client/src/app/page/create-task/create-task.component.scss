@@ -1,0 +1,47 @@
+@import '../../common/css/theme.form';
+
+.col {
+  overflow:auto;
+}
+
+.submit-button {
+  float:right;
+}
+
+.form{
+  margin-bottom: 15px;
+  width:100%;
+}
+
+@media (max-width: 680px) {
+  .col {
+    overflow:auto;
+  }
+  .submit-button {
+    margin-top: 10px;
+    float:right;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .col {
+    overflow:auto;
+  }
+  .submit-button {
+    margin-top: 10px;
+    float:right;
+  }
+
+}
+
+
+@media (max-width: 1024px) {
+  .submit-button {
+    margin-left: 22px;
+  }
+}
+
+
+
+

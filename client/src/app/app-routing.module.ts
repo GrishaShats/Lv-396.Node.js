@@ -11,8 +11,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { LoggedInGuard } from './common/guards/logged-in.guard';
 import { LoggedOutGuard } from './common/guards/logged-out.guard';
-import { RegistrationComponent } from "./home/registration/registration.component";
-import { UpdateComponent } from "./page/update/update.component";
+import { RegistrationComponent } from './home/registration/registration.component';
 
 
 export const routes: Routes = [
@@ -22,11 +21,6 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: PageComponent,
-    canActivate: [LoggedInGuard]
-  },
-  {
-    path: 'profile/update',
-    component: UpdateComponent,
     canActivate: [LoggedInGuard]
   },
   {

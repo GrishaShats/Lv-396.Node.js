@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { api } from '../../../environments/environment';
-import { Observable } from "rxjs/Rx";
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class AuthService {
@@ -11,7 +11,7 @@ export class AuthService {
     return this.http.post(`${api}auth/login`, {
       login,
       password
-    })
+    });
   }
 
   logout(): any {

@@ -1,0 +1,33 @@
+<accordion>
+  <accordion-group #group [isOpen]="isOpen" (click)="openTask()">
+    <div accordion-heading class="heading-grid ">
+      <div class="heading-text">
+        <h5>{{ task.name }}</h5>
+      </div>
+      <div class="heading-icon"></div >
+    </div>
+    <div class="body-grid">
+      <div class="share-button">
+        <app-modal-task [modalType]="'SHARE'" [task]="task"></app-modal-task>
+      </div>
+     <div class="body-from">
+        <span>Author: </span>
+        <span class="bold pointer">{{ task.author.firstName }}
+          {{ task.author.lastName }}</span>
+     </div>
+     <div class="body-share buttons" *ngIf="isSharedFrom && !isUserAuthor">
+        <span>Shared from: </span>
+        <span class="bold pointer">{{ task.sharedFrom.firstName }}
+          {{ task.sharedFrom.lastName }}</span>
+      </div>
+
+      <div class="edit-button">
+        <app-modal-task [modalType]="'EDIT'" [task]="task"></app-modal-task>
+      </div>
+      <div class="delete-button">
+        <button type="button" class="btn btn-outline-primary text-edit"
+                id="delete-button" (click)="deleteTask()">Delete</button>
+      </div>
+    </div>
+  </accordion-group>
+</accordion>
